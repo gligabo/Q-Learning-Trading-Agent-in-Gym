@@ -30,45 +30,6 @@ The rewards are calculated based on the change in the asset's value after each a
 
 The agent uses various technical indicators to make decisions. Common examples include moving averages, RSI (Relative Strength Index), MACD (Moving Average Convergence Divergence), and Bollinger Bands, which help predict market trends and potential price movements. Bollinger Bands, in particular, are useful for identifying overbought or oversold conditions by measuring the volatility of an asset relative to its moving average.
 
----
+### Results visualization
 
-## Scripts
-
-### 1. `q_learning_agent.py`
-
-This script contains the implementation of the Q-learning agent, which is responsible for making decisions in the trading environment.
-
-```python
-import numpy as np
-import random
-
-class QLearningAgent:
-    def __init__(self, actions, learning_rate=0.1, discount_factor=0.9, epsilon=0.1):
-        self.actions = actions
-        self.learning_rate = learning_rate
-        self.discount_factor = discount_factor
-        self.epsilon = epsilon
-        self.q_table = {}
-
-    def get_state_key(self, state):
-        return tuple(state)
-
-    def update_q_table(self, state, action, reward, next_state):
-        current_q = self.q_table.get(self.get_state_key(state), {}).get(action, 0)
-        max_future_q = max(self.q_table.get(self.get_state_key(next_state), {}).values(), default=0)
-        new_q = current_q + self.learning_rate * (reward + self.discount_factor * max_future_q - current_q)
-        
-        if self.get_state_key(state) not in self.q_table:
-            self.q_table[self.get_state_key(state)] = {}
-        
-        self.q_table[self.get_state_key(state)][action] = new_q
-
-    def choose_action(self, state):
-        if random.uniform(0, 1) < self.epsilon:
-            return random.choice(self.actions)
-        else:
-            state_q_values = self.q_table.get(self.get_state_key(state), {})
-            if state_q_values:
-                return max(state_q_values, key=state_q_values.get)
-            else:
-                return random.choice(self.actions)
+The results after training can be visualized using the render method from the gym-trading-env library. This method displays the actions taken by the agent, the portfolio value over time, and the corresponding rewards, allowing you to track the agent's performance and decision-making process throughout the trading episodes.
