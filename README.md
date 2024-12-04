@@ -6,8 +6,8 @@ This project implements a trading agent using Q-learning to learn how to take ac
 
 The project consists of three main scripts:
 
-1. **`data_preprocessing.py`**: Contains the implementation for loading, cleaning, and preparing the market data for training, including feature extraction for technical analysis indicators.
-2. **`technical_analysis.py`**: Defines the functions for calculating technical analysis indicators (such as moving averages, RSI, MACD) that the agent will use to make trading decisions.
+1. **`data_preprocessing.py`**: Contains the implementation for loading and cleaning the data
+2. **`technical_analysis.py`**: Defines the functions for calculating technical analysis indicators (such as moving averages, RSI, MACD) that the agent will use to make trading decisions. Also discretize the states and uses rolling windows to avoid the influence of currency value flutuations over time.
 3. **`trading_qlearning_ofc.py`**: The main script for training the agent using Q-learning, simulating the trading process, and adjusting the agent's policy over time.
 
 ## How It Works
@@ -28,7 +28,7 @@ The rewards are calculated based on the change in the asset's value after each a
 
 ### Technical Indicators
 
-The agent uses various technical indicators to make decisions. Common examples include moving averages, RSI (Relative Strength Index), and MACD (Moving Average Convergence Divergence), which help predict market movements.
+The agent uses various technical indicators to make decisions. Common examples include moving averages, RSI (Relative Strength Index), MACD (Moving Average Convergence Divergence), and Bollinger Bands, which help predict market trends and potential price movements. Bollinger Bands, in particular, are useful for identifying overbought or oversold conditions by measuring the volatility of an asset relative to its moving average.
 
 ---
 
