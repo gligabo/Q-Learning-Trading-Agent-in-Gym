@@ -32,4 +32,4 @@ The agent uses various technical indicators to make decisions. Common examples i
 
 ### Results visualization
 
-The results after training can be visualized using the render method from the gym-trading-env library. This method displays the actions taken by the agent, the portfolio value over time, and the corresponding rewards, allowing you to track the agent's performance and decision-making process throughout the trading episodes.
+The results after training can be visualized using the render method from the gym-trading-env library. This method displays the actions taken by the agent, the portfolio value over time, and the corresponding rewards, allowing you to track the agent's performance and decision-making process throughout the days.
